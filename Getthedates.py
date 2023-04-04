@@ -1,0 +1,320 @@
+import re
+
+text = """
+Juventud desenfrenada 1956
+3047. Juventud desenfrenada. Mexicana. Dir. José Díaz Morales. Int.
+Aída Araceli, Luz María Aguilar, Alvaro Ortiz. Prod. Calderón
+Films, 1956. Cine Orfeón, diciembre 25 de 1956. Siete semanas.
+
+###
+
+Al compás del rock and roll 	1957
+3197. Al compás del rock'n rol/. Mexicana. Dir. José Díaz Morales. Int.
+Martha Roth, Joaquín Cordero, Rosita Arenas. Prod. Filmadora Panamericana,
+1956. Cine Olimpia, mayo 23 de 1957. Dos semanas.
+-Lista de películas mexicanas que se estrenaron durante el decenio
+-Lista de películas que duraron más de una semana en sus cines
+ de estreno
+
+###
+
+Los chiflados del rock and roll 	1957
+3110. Los chiflados del rock and rollo Mexicana. Oir. José Oíaz Morales.
+Int. Luis AguiJar, Pedro Vargas, Rosita Arenas. Prod. Cinematográfica
+Calderón, 1956. Cine Orfeón. febrero 27 de 1957. Tres semanas.
+
+###
+
+La locura del rock and roll 	1957
+3145. La locura del rock and rol/. Mexicana. Dir. Fernando Méndez. Int.
+Lilia Prado, Lilia Guízar, Evita Muñoz Chachita. Prod. Películas
+Rodríguez, 1956. Cine Palacio Chino, marzo 29 de 1957. Cuatro
+semanas.
+-Decenio
+
+###
+
+Locos peligrosos 	1957
+3273. Locos peligrosos. Mexicana. Oir. Fernando Cortés. lnt. Germán
+Valdés Tin-tán, Yolanda Varela, Luis Aguilar. Prod. Producciones
+Sotomayor, 1957. Cine Chapultepec, agosto 8 de 1957. Tres semanas.
+-Decenio
+
+###
+
+Música de siempre 	1958
+3635. Música de siempre. Mexicana. Dir. Tito Davison. Int. Libertad Lamarque,
+Yolanda Montes Tongolele, Miguel Aceves Mejía. Prod.
+Alianza Cinematográfica y Asociación Nacional de Actores, 1956.
+Cines Maríscala y Olimpia, julio 17 de 1958. Dos semanas.
+
+###
+
+Peligros de juventud	1960
+377. Peligros de juventud. Mexicana. Dir. Benito Alazraki. Int. Elvira
+43 Quintana, Teresa Velázquez, Fernando Luján. Prod. CinematográficaCalderón,
+1959. Cine Mariscala, octubre 27 de 1960.
+-decenio
+
+###
+
+Ellas también son rebeldes 	1961
+623. Ellas también son rebeldes. Mexicana. Dir. Alejandro Galindo.
+Int. Lorena Velázquez, Martha Elena Cervantes, Silvia Suárez.
+Prod. Compañía Cinematográfica Mexicana, 1959. Cine Alameda,
+abril 20 de 1961. Tres semanas.
+-decenio
+
+###
+
+Jóvenes y rebeldes 	1961
+---
+
+###
+
+Los jóvenes 	1961
+807. Los jóvenes. Mexicana. Dir. Luis Alcoriza. Int. Teresa Velázquez,
+Julio Alemán, Adriana Roel. Prod. Cinematográfica Filmex,
+1960. Cines Variedades y Coliseo, septiembre 28 de 1961. Dos
+semanas.
+
+###
+
+A ritmo de twist 	1962
+1038. A ritmo de twist. Mexicana. Dir. Benito Alazraki. Int. Manuel
+Loco Valdés, Roberto Ramírez Beta el Boticario, María Eugenia
+Rubio. Prod. Cinematográfica Calderón, 1962. Cine Mariscala,
+marzo 29 de 1962. Cuatro semanas.
+
+###
+
+Twist, locura de la juventud 	1962
+1115. Twist locura de juventud. Mexicana. Dir. Miguel M. Delgado.
+Iní. Enrique Guzmán, Rosita Arenas, María Eugenia San Martín.
+Prod. Cinematográfica Absa, 1962. Cine Alameda, junio 7 de
+1962. Cuatra semanas.
+
+###
+
+El cielo y la tierra	1962
+1334. El cielo y la tierra. Mexicana. Dir. Alfonso Corona Blake. Int.
+Libertad Lamarque, César Costa, Luz Márquez. Prod. Producciones
+Brooks, 1962. Cines México, Mariscala y Opera, noviembre
+15 de 1962. Seis semanas.
+
+###
+
+Mi vida es una canción 	1963
+1593. Mi vida es una canción. Mexicana. Dir. Miguel M. Delgado. Int.
+Enrique Guzmán, Angélica María, Begoña Palacios. Prado Cinematográfica
+Absa, 1962. Cine Alameda, junio 13 de 1963. Cinco
+semanas.
+
+###
+
+Dile que la quiero 	1963
+1764. Dile que la quiero. Mexicana. Dir. Fernando Cortés. Int. César
+Costa, Patricia Conde, Beatriz Aguirre. Prod. Cinematográfica
+Grovas, 1963. Cines Alameda y Polanco, noviembre 14 de 1963.
+Tres semanas.
+
+###
+
+La edad de la violencia 	1964
+1897. La edad de la violencia. Mexicana. Dir. Julián Soler. Int.Fernando
+Soler, César Costa, Julio Alemán. Prod. Producciones Sotomayor,
+1963. Cines Las Américas, Orfeón y Polanco, abril 9 de
+1964. Cinco semanas.
+
+###
+
+La juventud se impone 	1964
+2115. La juventud se impone. Mexicana. Dir. Julián Soler. Int. Enrique
+Guzmán, César Costa, Patricia Conde. Prod. Cinematográfica
+Grovas, 1964. Cine Alameda, noviembre 5 de 1964. Cuatro semanas.
+
+###
+
+Vivir de sueños 	1964
+1842. Vivir de sueños. Mexicana. Dir. Rafael Baledón. Int. Angélica
+María, Enrique Guzmán, Manolo Muñoz. Prado Técnicos y Manuales
+del S.T.P.C., 1963. Cine Alameda, febrero 13 de 1964.
+Tres semanas.
+
+###
+
+Mi alma por un amor 	1964
+1952. Mi alma por un amor. Mexicana. Dir. Rafael Baledón. lnt. Angélica
+María, Enrique Guzmán, Manolo Muñoz. Prod. Técnicos y
+Manuales del S.T.P.C., 1963. Cine Orfeón, junio 11 de 1964.
+Siete semanas.
+
+###
+
+Nacidos para cantar 	1964
+2716. Nacidos para cantar. Mexicano-argentina. Dir. Emilio Gómez
+Muriel. Int. Julissa, Enrique Guzmán, Violeta Rivas. Prod. Cinetelmex,
+1965. Cine Alameda, junio 16 de 1966.
+
+###
+
+La alegría de vivir 	1965
+690. El país de la alegría (Li'l Abner). Norteamericana. Dir. Melvin
+Frank. Int. Peter Palmer, Leslie Parrish, Stubby Kaye. Prod.
+Norman Panama, Paramount, 1959. Cines Las Américas y Polanco,
+junio 15 de 1961.
+
+###
+
+Canta mi corazón	1965
+1128. Para ti canta mi corazón. Alemana. Dir. Hans Deppe. Int. Fred
+Bertelmann, Margit Nunke, Vivi Bacn. Cine Metropólitan, junio
+14 de 1962. Dos semanas.
+
+###
+
+Especialista en chamacas 	1965
+2432. Especialista en chamacas. Mexicana. Dir. Chano Urueta. Int.
+Enrique Guzmán, Javier Solís, Germán Valdés Tin-tán. Prod.
+Cinematográfica Filmex, 1965. Cines Mariscala y Carrusel (prestreno),
+agosto 28 de 1965, Y cines Alameda y Carrusel (estreno
+normal), diciembre 9 de 1965. Dos semanas.
+
+###
+
+Fiebre de juventud 	1966
+2766. Fiebre de juventud. Mexicano-ecuatoriana. Dir. Alfonso Corona
+Blake. Int. Enrique Guzmán, Begoña Palacios, Rosa María Vázquez.
+Prod. FUmadora Ecuatoriana, 1965. Cines Variedades y
+Carrusel (prestreno), agosto 20 de 1966, Y cine Metropólitan
+(estreno normal), septiembre 1 de 1966. Tres semanas.
+
+###
+
+Amor a ritmo de go-go 	1966
+2750. Amor a ritmo de go-gó. Mexicana. Dir. Miguel M. Delgado. lnt.
+Javier Solís, Rosa María Vázquez, Leonorilda Ochoa. Prod.
+Películas Mundiales y T.V. Producciones, 1966. Cines Palacio
+Chino y Carrusel, agosto 4 de 1966. Cinco semanas.
+
+###
+
+Juventud sin ley 	1966
+2757. Juventud sin ley (Rebeldes a go-gó). Mexicana. Dir: Gilberto
+Martínez Solares. Int. Marga López, Arturo de Córdova, José
+Elías Moreno. Prado Producciones Sotomayor, 1965. Cine Orfeón,
+agosto 11 de 1966. Diez semanas.
+
+###
+
+Me quiero casar 	1967
+3073. Me quiero casar. Mexicana. Dir. Julián Soler. lnt. Angélica María,
+Alberto Vázquez, Fernando Soler. Prod. Filmadora Chapultepec,
+1966. Cines Arcadia y Carrusel, junio 22 de 1967. Siete semanas.
+
+###
+
+Acapulco a go-go 	1967
+2914. Acapulco a go-gó. Mexicana. Dir. Arturo Martínez. lnt. Sonia
+Furió, Fernando Luján, Elizabeth Campbell. Prod. Radeant
+Films, 1966. Cines Alameda y Carrusel, enero 5 de 1967. Tres
+semanas.
+
+###
+
+Los perversos 	1967
+Los perversos (a go-gó j. Mexicana. Dir. Gilberto Martínez Solares.
+Int. Arturo de Córdova, Marga López, Fanny Cano. Prod.
+303 Atenea, 1966. Cines Carrusel y Orfeón, enero 12 de 1967. Diez
+semanas.
+
+###
+
+El mundo loco de los jóvenes	1967
+3264. El mundo loco delosjóvenes. Mexicana. Dir. José María Fernández
+Unsaín. Int. César Costa, Julissa, Julián Pastor. Prod. Tauro
+Films, 1967. Cine Colón, diciembre 8 de 1967. Dos semanas.
+
+###
+
+Vestidas y alborotadas 	1968
+Dir. Miguel Morayta. Int. Alberto Vázquez, Pili, Mili.
+Prod. Filmadora Chapultepec y Cesáreo González, 1967. Cines
+Palacio Chino, Opera, Polanco, Reforma, Río, Colonial, Jalisco,
+La Paz, Popotla, Bahía, Maya, Soledad, J anitzio y Minerva,
+marzo 14 de 1968. Ocho semanas.
+
+###
+
+Romeo contra Julieta 	1968
+3591. Romeo contra Julieta. Mexicana. Dir. Julián Soler. Int. Angélica
+María, Alberto Vázquez, Alejandro Suárez. Prod. Filmadora
+Chapultepec, 1968. Cines Palacio Chino, Opera, Reforma, Colonial,
+Ermita, Alamos, La Paz, Popotla, Bahía, Maya, Soledad,
+Máximo y MinerVa, noviembre 14 de 1968. Cuatro semanas.
+
+###
+
+Despedida de casada	1968
+3169. Despedida de casada. Mexicano-española. Dir. Juan de Orduña.
+Int. Julissa, Ana Luisa Peluffo, Carlos Estrada. Prod. Diana
+Films, Productora FI1mica México y Juan de Orduña P.C.,
+1966. Cine Tlatelolco (prestreno), octubre 1 de 1967, Y cine
+Variedades (estreno normal), junio 20 de 1968. Siete semanas.
+
+###
+
+5 de chocolate y 1 de fresa 	1968
+3649. Cinco de chocolate y uno de fresa. Mexicana. Ojr. Carlos Velo.
+lnt. Angélica María, Fernando Luján, Enrique Rambal. Prod.
+380 A.M. Libra, 1967. Cine Variedades, diciembre 26 de 1968. Nueve
+semanas.
+
+###
+
+Como perros y gatos 	1969
+3819. Como perros y gatos. Mexicana. Dir. Miguel M. Delgado. Int.Enrique
+Guzmán, Angélica María, Andrés Soler. Prod. Filmadora
+Chapultepec, 1968. Cines Roble, Francisco Villa, Emiliano Zapata
+y Santos Degollado (prestreno), junio 20 de 1969, y cines
+Palacio Chino, Carrusel, Opera, Reforma, Colonial, Alamos, La
+Paz, Popotla, Bahía, Maya, Soledad, Minerva, Hidalgo, Naur,
+Francisco Villa, Emiliano Zapata y Santos Degollado (estreno
+normal), septiembre 18 de 1969. Cuatro semanas.
+
+###
+
+La princesa hippie 	1969
+3777. La princesa hippie. Mexicana. Oir. Miguel Morayta. Int. Pili, Mili,
+Enrique Guzmán.Prod. Producciones Brooks y Películas Rodríguez,
+1968. Cines Palacio Chino, Las Américas, Opera, Reforma,
+Colonial, Ermita, Alamos, La Paz, Popotla, Bahía, Maya, Soledad,
+Minerva e Hidalgo, mayo 15 de 1969. Cuatro semanas.
+
+
+"""
+
+# Print the matched film titles
+
+blurbs_list = text.split('###\n')[:-1]  # split the blurbs into a list
+
+for blurb in blurbs_list:
+    # extract the date (in Spanish) using regex
+    date_regex = r"\b(?:enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)\s+\d{1,2}\s+de\s+\d{4}\b"
+    date_match = re.search(date_regex, blurb)
+    if date_match:
+        date = date_match.group()
+    else:
+        date = ''
+
+    # extract the title of the film using regex
+    title_regex = r'\w.+'
+    title_match = re.search(title_regex, blurb)
+    if title_match:
+        title = title_match.group()
+    else:
+        title = ''
+    
+    print('Title:', title)
+    print('Date:', date)
+    print("\n ### \n")
