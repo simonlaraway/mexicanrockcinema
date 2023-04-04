@@ -1,0 +1,119 @@
+/*This css currently lives in the Film Template template in Pods (Pods Admin[in the wordpress admin interface]->Pod Templates->Film Template)
+It only lives there because I cannot figure out where to put it in the WP files.*/
+
+:root {
+	--background-color: #fcf8f2;
+}
+
+.is-layout-flow.wp-block-group {
+	background-color: var(--background-color);	
+}
+
+/*removes automatic image shade that WP applies*/
+.wp-block-post-featured-image__overlay.has-background-dim.has-background-dim-50.has-contrast-background-color {
+	max-width: 0px;	
+}
+		
+ul {
+	padding: 0;
+    list-style-type: none;	
+}
+.award_wins, .award_noms, .genre {
+	text-align: center;
+	padding: 15px;
+}
+	
+.award_noms {
+	border-left: 2px solid black;
+	border-right: 2px solid black;	
+}
+	
+.screeninginfo {
+	background-color:#e8dde3;
+}
+.blurb {
+	background-color:#d8dde3;
+}	
+.crewsub {
+	 background-color:#c6ecc6;
+}
+.castsub {
+	 background-color:#f2e6ff;
+}
+	
+.castandcrew-wrapper {
+display: grid;
+grid-template-columns: 1fr 1fr;
+grid-gap: 20px	
+}
+	
+.otherinfo {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;	
+}
+	
+.blurb, .screeninginfo, .castandcrew-wrapper {
+	padding: 15px;
+}
+
+.wp-block-post-title {
+	margin-top: 0px;
+	vertical-align: top;
+}
+	
+	
+.alignwide.wp-block-post-featured-image{
+margin-bottom: 0px;
+margin-top: 0px;
+	
+}
+	
+h3 {
+	margin-top: 18px;
+	margin-bottom: 18px;
+}
+	
+h4{
+	margin: 0;	
+}
+		
+	
+/* /////////////////////////////image manipulation/////////////////*/
+	
+body .is-layout-constrained > .alignwide {
+	max-width: var(--wp--style--global--content-size);
+	
+}
+figure {
+	margin-bottom: var(--wp--preset--spac);
+	padding-top: 20px;
+	max-width: var(--wp--style--global--wide-size);
+}
+	
+@media screen and (min-width: 551px) {
+.wp-block-post-featured-image img {
+	display: block;
+	max-width: 35%;
+	margin-left: auto !important;
+	margin-right: 20px;
+	border: 5px solid var(--background-color);
+	float: left;
+	border-radius: 3px;
+	margin-top: 30px;
+	margin-bottom: 15px;
+}}
+
+	
+@media screen and (max-width: 550px) {
+.wp-block-post-featured-image img {
+	max-width: 50%;
+	display: block;
+  	margin-right: auto;
+	margin-left: auto !important;
+	border: 3px solid #555;
+	border-radius: 7px;
+	align: center;
+}	
+	
+}
+
