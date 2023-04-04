@@ -1,12 +1,23 @@
 import requests
 import csv
 
+"""
+This code scrapes the html from IMDB cast and crew pages. 
+The csv it retrieves the URLS from should be formatted like rockdata.csv, with the link to the cast and crew pages for each respective film as the 6th item 
+on each line.
+It will print the html for each film in a separate file. 
+
+Before you run this code, make sure that you have a folder titled "imdb_cast_crew_scraped" in your working directory. Or change that in the code below, ofc.
+"""
 
 
 header={'user-agent': '[Your Name]', } # replace w your name and credentials
 
 
 def gethtml(title, imdb):
+    """
+    
+    """
     html = requests.get(imdb, headers=header)
     htmltext = html.text
     with open(f"imdb_cast_crew_scraped/{title}_castcrew", 'w') as f: 
