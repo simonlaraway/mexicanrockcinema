@@ -1,37 +1,37 @@
 <?php
 
-//The purpose of this code is to draw the cast and crew lists from the "processors" pod and populate them automatically in the films page. 
-//On the site, this code currently lives in the Film Template, accessible by navigating from Pods Admin(in the wordpress admin interface)->Pod Templates->Film Template
-//Sorry it's so ugly, but it works.
+//All the php below draws cast and crew information from the aggregatedfiles.csv file 
+//and outputs it as the cast and crew lists on the film page. It works by 
+//1. establishing a variable for the film title respective to the film
+//2. Accessing the file "aggregatedfiles.csv", which contains ALL the cast and crew information. 
+//3. based on the film title, identifying the cast in filmdatacsv and writing the cast table
+//4. based on the film title, writing the crew based on the same method as step 3.
 
 
-
-
-//Establish constant for film title
+//Establish variable for film title
 	define("Raw_Title", get_the_title());
 	$cleantitle = preg_replace("/\s\([0-9]{4}\)/", "", Raw_Title);
-	
-
-$castarray = array();
-
-
-global $castarray;
-
-// Set up the arguments for the CAST AND CREW WP_Query object
-	$args = array(
-		'post_type' => 'Processor',
-		'name' => 'FilmDataCSV',	
-	);
+	//The if-else statement below is a kluge solution to a deeper problem. "Lola" is the film title,
+    //but there are other instances of "Lola" in the filmdatacsv, causing a problem displaying cast and crew. 
+    //If possible, nomenclature for film cast and crew lists should be cleaned up in aggregatedfiles.csv. If a new aggregatedfiles.csv is uploaded, it 
+    //MUST RETAIN THE SAME NAME. Otherwise, it will not detect the file and will result in the "Cast and Crew not found" message.
+	if (str_contains($cleantitle, "Lola")):
+		$cleantitle = ($cleantitle . " _");
+	else:
+		$cleantitle = $cleantitle;
+	endif;
 
 
-// Create a new WP_Query object
-	$query = new WP_query($args);
-		if ($query->have_posts()): 
-			while ($query->have_posts()):
-				$query->the_post();
+//establish file path to place where "aggregatedfiles.csv" lives
+$file_path = "/home/customer/www/mexicanrockcinema.com/public_html/wp-content/uploads/2023/04/aggregatedfiles.csv";
+
+$file = fopen($file_path, 'r');
+
+$csv = fread($file, filesize($file_path));
+fclose($file);
 
 				// access the post with the film data and store it all raw in the $csv variable.
-				$csv = get_post_field('post_content', 528, $context = 'raw');
+				//$csv = get_post_field('post_content', 528, $context = 'raw');
 				if (strpos($csv, $cleantitle) !== false):
 					//create an array with every chunk of film data; both cast and crew lists.			
 					$stringarray = explode("###", $csv);
@@ -49,8 +49,8 @@ global $castarray;
 				elseif (strpos($csv, $cleantitle) === false):
 					echo '<p>' . 'Cast and crew information not found' . '</p>';
 				endif;
-			endwhile;
-		endif;
+			//endwhile;
+		//endif;
 
 
 //Write the crew table. 
