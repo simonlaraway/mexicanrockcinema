@@ -5,8 +5,8 @@ One CSV file will contain the cast of the film followed by the role they play an
 The other CSV file will contain the crew members of the films and their titles, separated by hard returns. 
 
 Before running this code, make sure you have three things:
-1. A file in your working directory called "Cast"
-2. A file in your working directory called "Crew"
+1. A folder in your working directory called "Cast"; this is where the crew list will be written as a file
+2. A folder in your working directory called "Crew"; this is where the crew list will be written as a file
 3. A folder full of files of HTML scraped from the web using the "scrapeimdb.py" code. Put the path to this folder in the path variable.
 
 """
