@@ -4,10 +4,11 @@ import csv
 """
 This code scrapes the html from IMDB cast and crew pages. 
 The csv it retrieves the URLS from should be formatted like rockdata.csv, with the link to the cast and crew pages for each respective film as the 6th item 
-on each line.
+on each line. Alternatively, you can manipulate the code beginning on line 28 to take a list of tuples or something with the name of the film and the link to
+the imdb cast+crew page.
 It will print the html for each film in a separate file. 
 
-Before you run this code, make sure that you have a folder titled "imdb_cast_crew_scraped" in your working directory. Or change that in the code below, ofc.
+Before you run this code, make sure that you have a folder titled "imdb_cast_crew_scraped" in your working directory. This is where it will output the raw html.
 """
 
 
