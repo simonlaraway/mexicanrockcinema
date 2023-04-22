@@ -10,7 +10,7 @@ Directory and file explanation:
 2. Crew: This folder contains CSV files containing the crew title and crew member(s) with the title for each film. 
 3. imdb_cast_crew_scraped: This folder contains the raw HTML for the cast and crew list IMDB pages. 
 4. Screening Information: This is an incomplete text file with the blurbs pulled from the carteleras containing screening locations, lengths, and premier dates.
-5. aggregatedfiles.csv: This file contains all of the cast and crew information for all the films, with each film's respective cast and crew chunks separated by /n/n + ### + /n/n/
+5. aggregatedfiles.csv: This file contains all of the cast and crew information for all the films, with each film's respective cast and crew chunks separated by /n/n + ### + /n/n/. This is the file that lives on the site from which the cast and crew lists are pulled for each film.
 6. filmtemplate.css: The CSS for the film page, which lives in the Film Template.
 7. filmtemplate.php: The PHP for the film page, which lives in the Film Template.
 8. getnames.py: The Python code which extracts the cast and crew names from the raw HTML
