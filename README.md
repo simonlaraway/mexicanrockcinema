@@ -1,5 +1,5 @@
 # mexicanrockcinema
-Contains the code for collecting and displaying information on mexicanrockcinema.com, a database site featuring information on curated Mexican films involving rock music. Built using Wordpress and uses Pods framework for custom relational features between films, cast and crew, screening locations, etc. Uses custom PHP for dynamically populating information and custom CSS for layout. Python was used to scrape information from IMDb and from OCR'd screening database information.
+Contains the code for collecting and displaying information on mexicanrockcinema.com, a database site featuring information on curated Mexican films involving rock music. Built using Wordpress and uses Pods framework for displaying custom relational features between films, cast and crew, screening locations, etc. Uses custom PHP for dynamically populating information and custom CSS for layout. Python was used to scrape information from IMDb and from OCR'd screening database catalogues.
 
 Visit http://mexicanrockcinema.com/ to see the site. 
 
