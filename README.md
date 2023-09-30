@@ -3,7 +3,7 @@ Contains the code for collecting and displaying information on mexicanrockcinema
 
 Visit http://mexicanrockcinema.com/ to see the site. 
 
-Project built by me, overseen by Dr. Brian Price (Dept. of Spanish and Portuguese, BYU) and Dr. Jeremy Browne (Office of Digital Humanities, BYU). 
+Project built by me, advisement by by Dr. Brian Price (Dept. of Spanish and Portuguese, BYU) and Dr. Jeremy Browne (Office of Digital Humanities, BYU). 
 
 Directory and file explanation: 
 1. Cast: This folder contains CSV files containing the cast, the roles they played, and their imdb page URL for each film.
