@@ -1,6 +1,6 @@
 
 """
-This code functions to get the top cast from the imdb cast and crew list page of the film's html. Will output csv files, two for each film:
+This code gets the top cast from the imdb cast and crew list page of the film's html. Will output csv files, two for each film:
 One CSV file will contain the cast of the film followed by the role they play and the link to their IMDB page. Cast members separated by hard returns.
 The other CSV file will contain the crew members of the films and their titles, separated by hard returns. 
 
